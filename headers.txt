@@ -1,0 +1,26 @@
+Offline tablespaces
+*******************
+
+Max extents almost reached
+**************************
+
+Next extent will fail
+*********************
+
+Invalid objects
+***************
+
+Disabled constraints
+********************
+
+Disabled triggers
+********************
+
+Jobs not run
+********************
+
+Accounts to expire within 14 days
+********************
+
+Restorepoints actief
+********************

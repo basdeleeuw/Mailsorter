@@ -1,0 +1,150 @@
+Received: from EXMRS53.ad.utwente.nl (2001:67c:2564:a185::2:53) by
+ EXMRS54.ad.utwente.nl (2001:67c:2564:a185::2:54) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.1713.5
+ via Mailbox Transport; Wed, 17 Apr 2019 08:46:58 +0200
+Received: from EXMRS58.ad.utwente.nl (2001:67c:2564:a185::2:58) by
+ EXMRS53.ad.utwente.nl (2001:67c:2564:a185::2:53) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.1.1713.5; Wed, 17 Apr 2019 08:46:58 +0200
+Received: from exedge51.ad.utwente.nl (2001:67c:2564:a185::2:151) by
+ EXMRS58.ad.utwente.nl (2001:67c:2564:a185::2:58) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.1.1713.5
+ via Frontend Transport; Wed, 17 Apr 2019 08:46:58 +0200
+Received: from mx7.utsp.utwente.nl (130.89.2.11) by exedge51.ad.utwente.nl
+ (130.89.9.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.1415.2; Wed, 17 Apr
+ 2019 08:46:57 +0200
+Received: from filter6-ams.mf.surf.net (filter6-ams.mf.surf.net [192.87.102.76])
+          by mxpool.utwente.nl (8.15.2/Debian-3) with ESMTPS id x3H6kuJS011327
+          for <oracledboper@icts.utwente.nl>; Wed, 17 Apr 2019 08:46:57 +0200
+Received: from out62-ams.mf.surf.net (out62-ams.mf.surf.net [145.0.1.62])
+	by filter6-ams.mf.surf.net (8.14.4/8.14.4/Debian-8+deb8u2) with ESMTP id x3H6ktOT041366
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <oracledboper@icts.utwente.nl>; Wed, 17 Apr 2019 08:46:56 +0200
+Received: from smtps.utwente.nl (smtp-o2.utsp.utwente.nl [130.89.2.10])
+	by outgoing3-ams.mf.surf.net (8.14.4/8.14.4/Debian-4+deb7u1) with ESMTP id x3H6kisX018498
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NOT)
+	for <oracledboper@icts.utwente.nl>; Wed, 17 Apr 2019 08:46:45 +0200
+Received: from oda0082.utsp.utwente.nl (oda0082.utsp.utwente.nl [130.89.151.182])
+          by smtps.utwente.nl (8.13.8) with ESMTP id x3H6ksg1030790
+          for <oracledboper@icts.utwente.nl>; Wed, 17 Apr 2019 08:46:54 +0200
+Received: from oda0082.utsp.utwente.nl (localhost.localdomain [127.0.0.1])
+	by oda0082.utsp.utwente.nl (8.14.4/8.14.4) with ESMTP id x3H6knMK074240
+	for <oracledboper@icts.utwente.nl>; Wed, 17 Apr 2019 08:46:49 +0200
+Received: (from oracle@localhost)
+	by oda0082.utsp.utwente.nl (8.14.4/8.14.4/Submit) id x3H6knEK074237
+	for oracledboper@icts.utwente.nl; Wed, 17 Apr 2019 08:46:49 +0200
+Date: Wed, 17 Apr 2019 08:46:49 +0200
+From: Oracle DBA <oracle@oda0082.utsp.utwente.nl>
+Message-ID: <201904170646.x3H6knEK074237@oda0082.utsp.utwente.nl>
+Subject: daily_OATTEST.log
+To: undisclosed-recipients:;
+X-Bayes-Prob: 0.0001 (Score 0, tokens from: oracledboper@icts.utwente.nl, utwente-default, utwente:default, base:default, @@RPTN)
+X-Spam-Score: 0.30 () [Tag at 5.00] T_HDRS_LCASE:0.01,UPPERCASE_50_75:0.791,SPF(none:0),DKIM(none:0),CC(NL:-0.5)
+X-CanIt-Geo: ip=145.0.1.62; country=NL; latitude=52.3824; longitude=4.8995; http://maps.google.com/maps?q=52.3824,4.8995&z=6
+X-CanItPRO-Stream: utwente:oracledboper@icts.utwente.nl (inherits from utwente:utwente-default,utwente:default,base:default)
+X-Canit-Stats-ID: 0k01iKTNa - 7c9034e71d37 - 20190417
+X-Scanned-By: CanIt (www . roaringpenguin . com)
+X-Scanned-By: CanIt (www . roaringpenguin . com)
+X-Antispam-Training-Forget: https://www.mf.surf.net/canit/b.php?c=f&i=0k01iKTNa&m=7c9034e71d37&rlm=utwente&t=20190417
+X-Antispam-Training-Nonspam: https://www.mf.surf.net/canit/b.php?c=n&i=0k01iKTNa&m=7c9034e71d37&rlm=utwente&t=20190417
+X-Antispam-Training-Phish: https://www.mf.surf.net/canit/b.php?c=p&i=0k01iKTNa&m=7c9034e71d37&rlm=utwente&t=20190417
+X-Antispam-Training-Spam: https://www.mf.surf.net/canit/b.php?c=s&i=0k01iKTNa&m=7c9034e71d37&rlm=utwente&t=20190417
+Received-SPF: none (filter6-ams.mf.surf.net: domain of oracle@oda0082.utsp.utwente.nl
+	does not designate permitted sender hosts)
+	receiver=filter6-ams.mf.surf.net; client-ip=145.0.1.62;
+	envelope-from=<oracle@oda0082.utsp.utwente.nl>; helo=out62-ams.mf.surf.net;
+	identity=mailfrom
+Content-Type: text/plain
+Return-Path: oracle@oda0082.utsp.utwente.nl
+X-MS-Exchange-Organization-Network-Message-Id: 5fb8bba9-1a4a-47ce-5366-08d6c3007cb6
+X-MS-Exchange-Organization-AVStamp-Enterprise: 1.0
+X-Auto-Response-Suppress: DR, OOF, AutoReply
+X-MS-Exchange-Organization-AuthSource: exedge51.ad.utwente.nl
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.2440667
+X-MS-Exchange-Processed-By-BccFoldering: 15.01.1713.001
+MIME-Version: 1.0
+
+Offline tablespaces
+*******************
+
+Max extents almost reached
+**************************
+
+Next extent will fail
+*********************
+
+Invalid objects
+***************
+
+Object_name                    Object_type          Object_owner                
+------------------------------ -------------------- --------------------        
+ALL_SCHEDULER_JOBS             VIEW                 SYS                         
+DBA_AUTOTASK_CLIENT            VIEW                 SYS                         
+DBA_HIST_BASELINE              VIEW                 SYS                         
+DBA_SCHEDULER_CHAIN_RULES      VIEW                 SYS                         
+DBMS_GSM_CLOUDADMIN            PACKAGE BODY         GSMADMIN_INTERNAL           
+DBMS_ISCHED                    PACKAGE              SYS                         
+DBMS_ISCHED                    PACKAGE BODY         SYS                         
+DBMS_MANAGEMENT_PACKS          PACKAGE BODY         SYS                         
+DBMS_REPORT                    PACKAGE BODY         SYS                         
+DBMS_SCHEDULER                 PACKAGE BODY         SYS                         
+DBMS_SCHEDULER                 SYNONYM              PUBLIC                      
+DBMS_SQLDIAG                   PACKAGE BODY         SYS                         
+DBMS_SQLTCB_INTERNAL           PACKAGE              SYS                         
+DBMS_SQLTUNE                   PACKAGE BODY         SYS                         
+DBMS_SQLTUNE_INTERNAL          PACKAGE BODY         SYS                         
+DBMS_SWRF_INTERNAL             PACKAGE              SYS                         
+DBMS_WORKLOAD_REPOSITORY       PACKAGE              SYS                         
+DBMS_XPLAN                     PACKAGE BODY         SYS                         
+DRIMLX                         PACKAGE              CTXSYS                      
+DRIPREF                        PACKAGE              CTXSYS                      
+DRISGP                         PACKAGE              CTXSYS                      
+DRISPL                         PACKAGE              CTXSYS                      
+DRIXMD                         PACKAGE              CTXSYS                      
+DRVDDL                         PACKAGE              CTXSYS                      
+DRVRIO                         PACKAGE              CTXSYS                      
+FND_CONCURRENT_BUSINESS_EVENT  PACKAGE BODY         APPS                        
+FND_SESSION_MANAGEMENT         PACKAGE BODY         APPS                        
+FND_WEB_SEC                    PACKAGE BODY         APPS                        
+INT$DBA_HIST_BASELINE          VIEW                 SYS                         
+PRVT_ADVISOR                   PACKAGE BODY         SYS                         
+PRVT_HDM                       PACKAGE              SYS                         
+UMX_LOGIN_HELP_PVT             PACKAGE BODY         APPS                        
+WF_ENGINE                      PACKAGE BODY         APPS                        
+WF_ENGINE_UTIL                 PACKAGE BODY         APPS                        
+WF_QUEUE                       PACKAGE BODY         APPS                        
+WF_STANDARD                    PACKAGE BODY         APPS                        
+WWV_FLOW_MAIL                  PACKAGE BODY         APEX_050000                 
+XXVZ_CONVERSIE                 PACKAGE BODY         APPS                        
+XX_EXTRACTION_KIT_ORGANIZATION PACKAGE BODY         APPS                        
+XX_EXTRACTION_KIT_PERSON       PACKAGE BODY         APPS                        
+XX_EXTRACTION_KIT_TALENT       PACKAGE BODY         APPS                        
+XX_EXTRACT_CONTENT_ITEM        VIEW                 APPS                        
+XX_EXTRACT_RATING_LEVEL        VIEW                 APPS                        
+XX_EXTRACT_RATING_MODEL        VIEW                 APPS                        
+
+Disabled constraints
+********************
+
+Disabled triggers
+********************
+
+Jobs not run
+********************
+
+       Job Last run               Failures What                                 
+---------- -------------------- ---------- ------------------------------       
+       421 14-NOV-2017 13:00:03         16 dbms_refresh.refresh('"Q_IASO"       
+       266 15-NOV-2017 09:00:03         16 xxut_hrm_pack.vul_ipg_v08;           
+       423 14-NOV-2017 13:00:03         16 dbms_refresh.refresh('"Q_IASO"       
+       461 15-NOV-2017 09:02:53         16 dbms_refresh.refresh('"Q_IASO"       
+       442 15-NOV-2017 09:02:53         16 dbms_refresh.refresh('"Q_IASO"       
+       422 14-NOV-2017 13:00:03         16 dbms_refresh.refresh('"Q_IASO"       
+
+Accounts to expire within 14 days
+********************
+
+Restorepoints actief
+********************
