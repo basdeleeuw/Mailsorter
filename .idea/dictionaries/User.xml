@@ -13,6 +13,7 @@
       <w>headerpath</w>
       <w>linenr</w>
       <w>mailpath</w>
+      <w>mailsubject</w>
       <w>noreport</w>
       <w>printerrors</w>
       <w>savepath</w>

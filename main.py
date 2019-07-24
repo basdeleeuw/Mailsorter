@@ -5,6 +5,9 @@ MAILPATH = "./Mails"
 HEADERPATH = "./headers.txt"
 SAVEPATH = "./mail.oft"
 
+MAILTO = "oracledboper@icts.utwente.nl"
+MAILSUBJECT = "Daily Check"
+
 HEADERLIST_END = "==END=="
 NOREPORT_HEADERS = [
     4, 5, 6
@@ -68,9 +71,14 @@ def checkerrors(errors):
 # IN:    filelist: A list of the file names of the errorlogs
 #       errorlist: A matrix[headernr][linenr] of the errors in the e-mail
 #       headerlist: A list of the error headers in a [headernr][2]-matrix
-def save_errors(filelist, errorlist, headerlist):
+def mail_errors(filelist, errorlist, headerlist):
     print("You forgot to implement the save_errors routine you dummy")
-
+    outlook = win32.Dispatch('outlook.application')
+    mail = outlook.CreateItem(0)
+    mail.to = MAILTO
+    mail.subject = MAILSUBJECT
+    mail.body = ""  # TODO: Fix the body
+    mail.Display(True)
 
 # Prints the errors to the screen in a semi-readable way, mainly for debugging
 # IN:    errors: a matrix[headernr][linenr] of the errors in the e-mail
@@ -91,6 +99,4 @@ for i in range(len(files)):
     errors.append(geterrors(files[i], headers))
     # printerrors(errorslist[i])
 
-save_errors(files, errors, headers)
-outlook = win32.Dispatch('outlook.application')
-mail = outlook.CreateItem(0)
+mail_errors(files, errors, headers)
