@@ -77,8 +77,25 @@ def mail_errors(filelist, errorlist, headerlist):
     mail = outlook.CreateItem(0)
     mail.to = MAILTO
     mail.subject = MAILSUBJECT
-    mail.body = ""  # TODO: Fix the body
+    mail.HTMLbody = '''<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-5ua9{font-weight:bold;text-align:left}
+.tg .tg-s268{text-align:left}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-5ua9">Database</th>
+    <th class="tg-5ua9">Melding</th>
+  </tr>
+  <tr>
+    <td class="tg-s268"></td>
+    <td class="tg-s268"></td>
+  </tr>
+</table>'''  # TODO: Fix the body
     mail.Display(True)
+
 
 # Prints the errors to the screen in a semi-readable way, mainly for debugging
 # IN:    errors: a matrix[headernr][linenr] of the errors in the e-mail
