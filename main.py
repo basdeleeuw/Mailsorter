@@ -4,6 +4,7 @@ import win32com.client as win32
 MAILPATH = "./Mails"
 HEADERPATH = "./headers.txt"
 SAVEPATH = "./mail.oft"
+TABLEPATH = "./Table"
 
 MAILTO = "oracledboper@icts.utwente.nl"
 MAILSUBJECT = "Daily Check"
@@ -58,7 +59,7 @@ def geterrors(filename, headerlist):
     return errors
 
 
-# Checks of there are errors to be reported
+# Checks if there are errors to be reported
 def checkerrors(errors):
     reportable_errors = False
     for i in range(len(errors)):
@@ -67,33 +68,58 @@ def checkerrors(errors):
     return reportable_errors
 
 
+def tablerow(file, errors, headerlist):
+    errorcell = ""
+    for i in range (len(errors)):
+        if ((i not in NOREPORT_HEADERS) and errors[i]):
+            errorcell = errorcell + headerlist[i][0] + "<br>" + headerlist[i][1] + "<br><br>"
+            errorhtml = errors[i]
+            print(errorhtml)
+            for j in range (len(errorhtml)):
+                errorhtml[j] = errorhtml[j].replace("\n", "<br>")
+                errorhtml[j] = errorhtml[j].replace(" ", "&nbsp;")
+            print(errorhtml)
+            errorhtml = "".join(errorhtml)
+            print(errorhtml)
+            errorcell = errorcell + errorhtml + "<br><br>"
+    filename = file[:-8]
+    row = '''<tr>
+                <td class="tg-table">''' + filename + '''</td>
+                <td class="tg-table">''' + errorcell + '''</td>
+             </tr>'''
+    return row
+
+def composetables(filelist, errorlist, headerlist):
+    tables = [""] * 2
+    emptytable = open(TABLEPATH+"/EmptyTable.html").read()
+    tableheader = open(TABLEPATH+"/TableHeader.html").read()
+
+    tables[0] = '<table class="tg">' + tableheader
+    for i in range (len(filelist)):
+        if checkerrors(errorlist[i]):
+            tables[0] = tables[0] + tablerow(filelist[i],errorlist[i],headerlist)
+    tables[0] = tables[0] + "</table>"
+
+    tables[1] = emptytable
+
+    return tables
+
+def composebody(tables):
+    style = open(TABLEPATH+"/Style.html").read()
+
+    body = style + "Hallo,<br><br>" + "Bij deze de meldingen van vandaag.<br><br>" + "<h2>Daily logs</h2>" + tables[0] + "<h2>Non-daily logs</h2>" + tables[1] + "<br><br>Groeten,<br> "
+    return body
+
 # Writes the errors to an e-mail
 # IN:    filelist: A list of the file names of the errorlogs
 #       errorlist: A matrix[headernr][linenr] of the errors in the e-mail
 #       headerlist: A list of the error headers in a [headernr][2]-matrix
-def mail_errors(filelist, errorlist, headerlist):
-    print("You forgot to implement the save_errors routine you dummy")
+def mail_errors(body):
     outlook = win32.Dispatch('outlook.application')
     mail = outlook.CreateItem(0)
     mail.to = MAILTO
     mail.subject = MAILSUBJECT
-    mail.HTMLbody = '''<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-5ua9{font-weight:bold;text-align:left}
-.tg .tg-s268{text-align:left}
-</style>
-<table class="tg">
-  <tr>
-    <th class="tg-5ua9">Database</th>
-    <th class="tg-5ua9">Melding</th>
-  </tr>
-  <tr>
-    <td class="tg-s268"></td>
-    <td class="tg-s268"></td>
-  </tr>
-</table>'''  # TODO: Fix the body
+    mail.HTMLbody = body
     mail.Display(True)
 
 
@@ -116,4 +142,8 @@ for i in range(len(files)):
     errors.append(geterrors(files[i], headers))
     # printerrors(errorslist[i])
 
-mail_errors(files, errors, headers)
+mailtables = composetables(files, errors, headers)
+
+mailbody = composebody(mailtables)
+
+mail_errors(mailbody)

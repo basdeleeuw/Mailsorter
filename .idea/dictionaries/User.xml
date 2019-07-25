@@ -17,6 +17,7 @@
       <w>noreport</w>
       <w>printerrors</w>
       <w>savepath</w>
+      <w>tablepath</w>
     </words>
   </dictionary>
 </component>
