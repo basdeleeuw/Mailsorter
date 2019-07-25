@@ -71,16 +71,13 @@ def checkerrors(errors):
 def tablerow(file, errors, headerlist):
     errorcell = ""
     for i in range (len(errors)):
-        if ((i not in NOREPORT_HEADERS) and errors[i]):
+        if (i not in NOREPORT_HEADERS) and errors[i]:
             errorcell = errorcell + headerlist[i][0] + "<br>" + headerlist[i][1] + "<br><br>"
             errorhtml = errors[i]
-            print(errorhtml)
             for j in range (len(errorhtml)):
                 errorhtml[j] = errorhtml[j].replace("\n", "<br>")
                 errorhtml[j] = errorhtml[j].replace(" ", "&nbsp;")
-            print(errorhtml)
             errorhtml = "".join(errorhtml)
-            print(errorhtml)
             errorcell = errorcell + errorhtml + "<br><br>"
     filename = file[:-8]
     row = '''<tr>
